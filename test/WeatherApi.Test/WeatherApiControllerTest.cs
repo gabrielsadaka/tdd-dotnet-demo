@@ -22,4 +22,18 @@ namespace WeatherApi.Test
             Assert.Equal(actualWeather.Weather, expectedWeather.Weather);
         }
     }
+
+    public class WeatherController
+    {
+        public WeatherForecast GetWeather()
+        {
+            return new WeatherForecast();
+        }
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Day { get; set; }
+        public double Weather { get; set; }
+    }
 }
