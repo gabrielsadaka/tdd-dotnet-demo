@@ -27,7 +27,11 @@ namespace WeatherApi.Test
     {
         public WeatherForecast GetWeather()
         {
-            return new WeatherForecast();
+            return new WeatherForecast
+            {
+                Day = DateTime.Now,
+                Weather = 10.3
+            };
         }
     }
 
