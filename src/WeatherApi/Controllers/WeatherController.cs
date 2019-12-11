@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Mvc;
 using WeatherApi.Infrastructure;
 
 namespace WeatherApi.Controllers
 {
-    public class WeatherController
+    [ApiController]
+    [Route("api/weather")]
+    public class WeatherController : ControllerBase
     {
         private readonly ISystemClock _systemClock;
 
@@ -11,6 +14,7 @@ namespace WeatherApi.Controllers
             _systemClock = systemClock;
         }
 
+        [HttpGet]
         public WeatherForecast GetWeather()
         {
             return new WeatherForecast

@@ -18,7 +18,7 @@ namespace WeatherApi.Test
         {
             var client = _factory.CreateClient();
 
-            var response = await client.GetAsync("/weather");
+            var response = await client.GetAsync("/api/weather");
 
             response.EnsureSuccessStatusCode();
         }
