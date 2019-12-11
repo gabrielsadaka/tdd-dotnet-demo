@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace WeatherApi.Test
@@ -21,6 +22,19 @@ namespace WeatherApi.Test
             var response = await client.GetAsync("/api/weather");
 
             response.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async Task GetReturnsWeather()
+        {
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/api/weather");
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            dynamic responseObject = JsonConvert.DeserializeObject(responseContent);
+
+            Assert.Equal(10.3, (double)responseObject.weather);
         }
     }
 }
